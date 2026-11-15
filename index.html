@@ -155,6 +155,11 @@ body[data-s=speaking][data-e=shy]{--c:#ff8ad8}
 #langsheet h3{grid-column:1/-1;font:600 13px 'Hind Siliguri',sans-serif;color:var(--dim)}
 #langsheet button{padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;font:500 16px 'Hind Siliguri',sans-serif;cursor:pointer}
 #langsheet button.on{background:linear-gradient(135deg,var(--c),var(--m));color:#00121a;font-weight:700}
+/* layout safety: one column that can never grow wider than the screen */
+#app{grid-template-columns:minmax(0,1fr)}
+#app>*{min-width:0}
+#right,.chathead{min-width:0;max-width:100%;overflow:hidden}
+#agents{min-width:0;max-width:100%}
 </style>
 </head>
 <body>
@@ -217,6 +222,7 @@ body[data-s=speaking][data-e=shy]{--c:#ff8ad8}
   <div class="row"><button id="tasksb">📝 আমার টাস্ক</button></div>
   <label>ভাষা<select id="lang"></select></label>
   <div class="row"><button data-g="f">👩 মেয়ের কণ্ঠ</button><button data-g="m">👨 ছেলের কণ্ঠ</button></div>
+  <label class="chk"><input id="vad" type="checkbox"> 🔇 বিপহীন মাইক (পরীক্ষামূলক)</label>
   <label class="chk"><input id="wake" type="checkbox"> "সাদিয়া" বলে ডাকলে তবেই সাড়া দেবে</label>
   <label>অতিরিক্ত Worker URL (প্রতি লাইনে একটা)<textarea id="wlist" rows="3" placeholder="https://....workers.dev"></textarea></label>
   <div class="row"><button data-v="auto">🤝 হাইব্রিড</button><button data-v="sadia">✨ সাদিয়া ভয়েস</button><button data-v="google">🔈 গুগল ভয়েস</button></div>
